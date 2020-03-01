@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   
+</head>
+<style>
+    .color-box{
+        width: 40px;
+        height: 40px;
+        margin-top: 5px;
+    }
+    .disabledButton{
+        background-color: red;
+    }
+</style>
+<body>
+    
+    <div id="app">
+        <div class="">
+
+            <h5>Cart {{cart}}</h5>
+        </div>
+        <img v-bind:src="image" v-bind:alt="altText">
+        <!-- both are same below one is hsort hand -->
+        <!-- <img :src="image"> -->
+        <button v-on:click="addToCart" 
+        :disabled="!inStock"
+        :class="{disabledButton: !inStock}"
+        >Add to Cart</button>
+        <a :href="link">Take me to Main Website</a>
+        <h1>{{ product + ' | $ 200' }}</h1>
+        <p v-if="inventory > 10 ">In Stock</p>
+        <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold out</p>
+        <p v-else>Out of Stock</p>
+        <p v-if="onSale">On Sale !!</p>
+        <ul>
+            <li v-for="detail in details">{{detail}}</li>
+        </ul>
+        <h2>Color</h2>
+        <div v-for="varient in varients" :key="varient.varientId"
+         class="color-box" 
+         :style="{backgroundColor : varient.varientColor}"
+         @mouseover="updateProduct(varient.varientImage)"
+         >
+        </div>
+        <div>
+            <h2>Sizes</h2>
+        
+        <ul v-for="size in sizes">
+            <li>{{size}}</li>
+        </ul>
+    </div>
+    </div>
+<script>
+ 
+</script>
+<!-- Always keep local js file at endo of html  -->
+<script src="js/script.js"></script>
+</body>
+</html>
